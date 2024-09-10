@@ -91,7 +91,80 @@ Training and testing accuracy/loss graphs for both models:
 
 ## 📂 Flowcharts
 
-Flowcharts outlining the process flow for both models can be found [here](<INSERT LINK HERE>).
+# Detailed Flowchart for Car Damage Detection using MobileNetV2
+
+## 1. Data Loading and Preparation
+- **Process**: Load and preprocess images from directories.
+  - **Libraries**: 
+    - `os`: Directory traversal and file path handling.
+    - `numpy`: Numerical operations for data manipulation.
+    - `pandas`: Data handling (not specifically used in this case).
+    - `tensorflow.keras.preprocessing.image`: For image processing.
+  - **Sample Size**: 460 images (230 for "00-damage", 230 for "01-whole").
+  - **Purpose**: Gather images, preprocess, and prepare for model input.
+  - **Output**: `data` and `labels` arrays.
+
+## 2. Data Preprocessing and Augmentation
+- **Process**: Preprocess and augment the data for training and validation.
+  - **Libraries**: 
+    - `ImageDataGenerator`: Perform real-time data augmentation.
+    - `tensorflow.keras.applications.mobilenet_v2`: Preprocess images for MobileNetV2.
+    - `sklearn.preprocessing.LabelBinarizer`: One-hot encode labels.
+  - **Augmentations**: Rotation, zoom, width/height shifts, flips, etc.
+  - **Purpose**: Improve model generalization by generating augmented samples.
+  - **Output**: Augmented training data.
+
+## 3. Model Creation and Compilation
+- **Process**: Load MobileNetV2, freeze base layers, and add custom classification layers.
+  - **Libraries**:
+    - `tensorflow.keras.applications.MobileNetV2`: Use pre-trained MobileNetV2 as the base model.
+    - `tensorflow.keras.layers`: Add custom fully connected layers on top.
+    - `tensorflow.keras.models`: Define and compile the model.
+    - `Adam Optimizer`: Set exponential learning rate decay schedule.
+  - **Purpose**: Create a model suitable for binary classification.
+  - **Output**: Compiled model.
+
+## 4. Model Training
+- **Process**: Train the model on augmented training data.
+  - **Libraries**:
+    - `tensorflow.keras.Model.fit`: Train the model.
+    - `TensorBoard`: Log performance metrics.
+  - **Training Parameters**: 
+    - Learning Rate: `INIT_LR = 1e-5`
+    - Epochs: `100`
+    - Batch Size: `64`
+  - **Purpose**: Train the head of the MobileNetV2 model.
+  - **Output**: Trained model and training logs.
+
+## 5. Model Evaluation
+- **Process**: Evaluate model performance using testing data.
+  - **Libraries**:
+    - `tensorflow.keras.Model.predict`: Predict on test data.
+    - `sklearn.metrics.classification_report`: Generate classification report.
+  - **Evaluation Metrics**: Precision, recall, F1-score, accuracy.
+  - **Output**: Performance report with metrics.
+
+## 6. Model Saving
+- **Process**: Save the trained model for future inference.
+  - **Libraries**: 
+    - `tensorflow.keras.models.save_model`: Save model in `.h5` format.
+  - **Purpose**: Save the trained model to disk.
+  - **Output**: Saved model file (`MobileNet_Car_detection_epoch100_.model`).
+
+## 7. Visualization of Model Layers
+- **Process**: Visualize model layer activations for given input images.
+  - **Libraries**:
+    - `keras.models`: Load and manipulate the saved model.
+    - `matplotlib.pyplot`: Display the visualizations.
+  - **Purpose**: Analyze how the model processes images at different layers.
+  - **Output**: Feature maps of intermediate layers.
+
+## 8. Additional Features: Visualization and TensorBoard
+- **Process**: Visualize training loss/accuracy and use TensorBoard for performance monitoring.
+  - **Libraries**: 
+    - `matplotlib.pyplot`: Plot graphs.
+    - `TensorBoard`: Log and visualize performance during training.
+  - **Output**: Plots for training loss and accuracy, and TensorBoard logs.
 
 ## 📜 References
 
