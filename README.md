@@ -91,7 +91,7 @@ Training and testing accuracy/loss graphs for both models:
 
 ## 📂 Flowcharts
 
-### Detailed Flowchart for Car Damage Detection using MobileNetV2
+### Car Damage Detection using MobileNetV2
 ```bash
 +----------------------------------------------------------+
 |                       Start                              |
