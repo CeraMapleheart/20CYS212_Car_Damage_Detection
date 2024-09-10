@@ -73,12 +73,11 @@ Both models are assessed based on their accuracy, performance, and resource effi
   
 ## 📈 Results and Performance Comparison
 
-| Metric          | MobileNetV2 | Custom CNN |
-|-----------------|-------------|------------|
-| Accuracy        | XX%         | XX%        |
-| Training Time   | XX minutes  | XX minutes |
-| Parameters      | XX Million  | XX Million |
-| Inference Speed | XX ms/image | XX ms/image|
+| Metric          | MobileNetV2 | 
+|-----------------|-------------|
+| Accuracy        | 78.7%       |
+| Parameters      | 2,422,210   | 
+
 
 - MobileNetV2 showed better **accuracy** with a faster **inference time** due to transfer learning.
 - Custom CNN required more time to train but offered more flexibility in terms of tuning the architecture.
@@ -87,8 +86,8 @@ Both models are assessed based on their accuracy, performance, and resource effi
 
 Training and testing accuracy/loss graphs for both models:
 
-![Model 1 Accuracy Plot](images/model1_accuracy_plot.png)
-![Model 2 Accuracy Plot](images/model2_accuracy_plot.png)
+![Accuracy Plot]([images/model1_accuracy_plot.png](https://github.com/user-attachments/assets/bfa126bd-56e7-4503-97b0-be387b6c7feb))
+
 
 ## 📂 Flowcharts
 
