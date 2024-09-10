@@ -92,81 +92,88 @@ Training and testing accuracy/loss graphs for both models:
 ## 📂 Flowcharts
 
 # Detailed Flowchart for Car Damage Detection using MobileNetV2
-# Detailed Image Classification Process Flowchart
+# Detailed Image Classification Flowchart (ASCII Diagram)
 
-```mermaid
-flowchart TD
-    A[Start] --> B[Import Libraries]
-    B --> C[Define Paths and Categories]
-    C --> D[Load and Preprocess Images]
-    D --> E[One-Hot Encode Labels]
-    E --> F[Split Data into Training and Testing Sets]
-    F --> G[Data Augmentation Setup]
-    G --> H[Build MobileNetV2 Model]
-    H --> I[Freeze Base Model Layers]
-    I --> J[Compile the Model]
-    J --> K[Train the Model]
-    K --> L[Evaluate the Model]
-    L --> M[Save the Model]
-    M --> N[Plot Training Results]
-    N --> O[Load and Visualize Model Layers]
-    O --> P[Make Predictions]
-    P --> Q[End]
-    
-    subgraph Libraries
-    R[Libraries Used]
-    R --> S[Numpy]
-    R --> T[Pandas]
-    R --> U[TensorFlow]
-    R --> V[Scikit-Learn]
-    R --> W[OpenCV]
-    R --> X[Matplotlib]
-    end
-    
-    C --> C1[Specify Dataset Path]
-    C --> C2[Define Categories: 00-damage, 01-whole]
+Start
+  |
+  v
+Import Necessary Libraries (TensorFlow, Keras, etc.)
+  |
+  v
+Define Image Paths and Label Categories
+  |---> Check if paths and categories exist
+  |
+  v
+Load Images from Directory
+  |---> Use functions like `image_dataset_from_directory`
+  |
+  v
+Preprocess Images
+  |---> Resize images to 224x224
+  |---> Normalize pixel values (0 to 1)
+  |
+  v
+One-Hot Encode Labels
+  |---> Convert categorical labels to binary vectors
+  |
+  v
+Split Data into Training and Testing Sets
+  |---> 80% Training, 20% Testing
+  |---> Shuffle and ensure no data leakage
+  |
+  v
+Apply Data Augmentation (Optional)
+  |---> Random flips, rotations, and zooms to increase diversity
+  |
+  v
+Load Pre-Trained MobileNetV2 Model
+  |---> Use `keras.applications` to load MobileNetV2
+  |---> Exclude top layers (include_top=False)
+  |
+  v
+Freeze Base Model Layers
+  |---> Prevent MobileNetV2 layers from being updated during training
+  |
+  v
+Add Custom Dense Layers
+  |---> Add new fully connected layers for your specific classification task
+  |---> Example: Flatten layer + Dense Layer + Softmax Output
+  |
+  v
+Compile the Model
+  |---> Define loss function (e.g., `categorical_crossentropy`)
+  |---> Choose optimizer (e.g., Adam)
+  |---> Specify metrics (e.g., accuracy)
+  |
+  v
+Train the Model
+  |---> Feed augmented data into model
+  |---> Set batch size, number of epochs
+  |---> Save training history for analysis
+  |
+  v
+Evaluate the Model on Test Data
+  |---> Measure accuracy, precision, recall, etc.
+  |
+  v
+Save the Trained Model
+  |---> Use `model.save('model_name.h5')` to save for future use
+  |
+  v
+Plot Training Results
+  |---> Plot loss and accuracy for training vs validation sets
+  |
+  v
+Make Predictions on New Data
+  |---> Test model predictions with unseen images
+  |
+  v
+Generate Confusion Matrix and Classification Report
+  |---> Understand model's performance in more detail
+  |
+  v
+End
 
-    D --> D1[Load Images from Training Directory]
-    D --> D2[Resize Images to (224, 224)]
-    D --> D3[Convert Images to Arrays]
-    D --> D4[Preprocess Images with MobileNetV2 Preprocessing]
-
-    E --> E1[Convert Labels to Binary Format]
-    E --> E2[Apply One-Hot Encoding]
-
-    F --> F1[Split Data: 80% Training, 20% Testing]
-    
-    G --> G1[Set Up ImageDataGenerator for Augmentation]
-    G --> G2[Define Augmentation Parameters: Rotation, Zoom, etc.]
-
-    H --> H1[Load MobileNetV2 Base Model with Pretrained Weights]
-    H --> H2[Add Custom Head: MaxPooling2D, Flatten, Dense Layers]
-
-    I --> I1[Freeze Layers of the Base Model]
-
-    J --> J1[Compile Model with Adam Optimizer]
-    J --> J2[Set Loss Function: Binary Crossentropy]
-    J --> J3[Define Metrics: Accuracy]
-
-    K --> K1[Train Model Using Augmented Data]
-    K --> K2[Use TensorBoard for Visualization]
-
-    L --> L1[Evaluate Model on Testing Set]
-    L --> L2[Generate Classification Report]
-
-    M --> M1[Save Trained Model to Disk]
-
-    N --> N1[Plot Training Loss and Accuracy]
-    N --> N2[Save Plots as Images]
-
-    O --> O1[Load Pre-trained Model]
-    O --> O2[Visualize Activations of Intermediate Layers]
-    
-    P --> P1[Load Test Images]
-    P --> P2[Preprocess Test Images]
-    P --> P3[Make Predictions on Test Images]
-    P --> P4[Display Prediction Results]
-```
 ## 📜 References
 
 - [Car Damage Detection and Classification](<PAPER 1 LINK>)
