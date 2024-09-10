@@ -172,7 +172,7 @@ flowchart TD
     P --> P2[Preprocess Test Images]
     P --> P3[Make Predictions on Test Images]
     P --> P4[Display Prediction Results]
-
+```
 
 ## 📜 References
 
