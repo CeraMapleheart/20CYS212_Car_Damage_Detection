@@ -92,7 +92,6 @@ Training and testing accuracy/loss graphs for both models:
 ## 📂 Flowcharts
 
 # Detailed Flowchart for Car Damage Detection using MobileNetV2
-
 # Detailed Image Classification Process Flowchart
 
 ```mermaid
@@ -114,21 +113,16 @@ flowchart TD
     O --> P[Make Predictions]
     P --> Q[End]
     
-    B --> R[Libraries Used]
+    subgraph Libraries
+    R[Libraries Used]
     R --> S[Numpy]
     R --> T[Pandas]
     R --> U[TensorFlow]
     R --> V[Scikit-Learn]
     R --> W[OpenCV]
     R --> X[Matplotlib]
+    end
     
-    S --> B
-    T --> B
-    U --> B
-    V --> B
-    W --> B
-    X --> B
-
     C --> C1[Specify Dataset Path]
     C --> C2[Define Categories: 00-damage, 01-whole]
 
@@ -173,7 +167,6 @@ flowchart TD
     P --> P3[Make Predictions on Test Images]
     P --> P4[Display Prediction Results]
 ```
-
 ## 📜 References
 
 - [Car Damage Detection and Classification](<PAPER 1 LINK>)
